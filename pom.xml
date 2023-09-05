@@ -3,19 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.ibs</groupId>
-    <artifactId>jdbc-ibs</artifactId>
+    <artifactId>ibs-practice-rest</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <name>jdbc-ibs</name>
-    <url>http://maven.apache.org</url>
 
     <properties>
         <!-- Encoding -->
         <encoding.type>UTF-8</encoding.type>
         <project.build.sourceEncoding>${encoding.type}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${encoding.type}</project.reporting.outputEncoding>
-        <file.encoding>${encoding.type}</file.encoding>
 
         <!-- Java version -->
         <java.version>11</java.version>
@@ -52,7 +46,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>6.0.11</version>
+            <version>5.3.24</version>
             <scope>test</scope>
         </dependency>
 
