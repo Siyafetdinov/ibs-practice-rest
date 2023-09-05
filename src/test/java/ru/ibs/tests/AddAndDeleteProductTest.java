@@ -13,7 +13,6 @@ import java.util.List;
 
 public class AddAndDeleteProductTest extends BaseTest {
     private final String TABLE_NAME = "Food";
-    private List<Product> products;
 
     @Tag("IBS_1")
     @DisplayName("Добавление товаров")
@@ -22,7 +21,7 @@ public class AddAndDeleteProductTest extends BaseTest {
     void addAndDeleteProductTest(Product testProduct) {
 
         //Сохранение первоначальный список товаров, через API")
-        products = RestUtils.getAllProducts();
+        List<Product> products = RestUtils.getAllProducts();
 
         // Проверяем что список полученный через API совпадает со списком полученным через БД
         Assertions.assertEquals(products, dataBaseControl.selectAllProductFrom(TABLE_NAME));
