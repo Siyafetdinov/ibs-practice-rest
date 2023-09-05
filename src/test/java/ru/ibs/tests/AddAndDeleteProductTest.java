@@ -48,7 +48,7 @@ public class AddAndDeleteProductTest extends BaseTest {
                 "Товар не был удален");
 
         // Проверяем что список полученный через API в начале теста совпадает
-        // со списком полученным через через API в конце теста")
+        // со списком полученным через через API в конце теста
         Assertions.assertEquals(products, RestUtils.getAllProducts(),
                 "Первоначальный список и список после всех манипуляйций не совпадает");
     }
