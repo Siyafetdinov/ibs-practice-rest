@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import java.util.Properties;
 
-public class UtilsDB {
+public class DBUtils {
     private static final String PATH_TO_PROPERTIES_BD = "src/test/resources/db.properties";
     public static HikariDataSource getDataSourceHikari() {
         Properties properties = new Properties();

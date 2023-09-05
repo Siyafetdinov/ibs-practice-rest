@@ -3,8 +3,9 @@ package ru.ibs.dataBaseControl;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+
 import ru.ibs.product.Product;
-import ru.ibs.utils.UtilsDB;
+import ru.ibs.utils.DBUtils;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class DataBaseControl {
 
     public static DataBaseControl getInstance() {
         if (dataBaseControl == null) {
-            dataBaseControl = new DataBaseControl(new JdbcTemplate(UtilsDB.getDataSourceHikari()));
+            dataBaseControl = new DataBaseControl(new JdbcTemplate(DBUtils.getDataSourceHikari()));
         }
         return dataBaseControl;
     }
