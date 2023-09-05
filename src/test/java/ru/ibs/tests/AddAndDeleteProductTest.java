@@ -20,34 +20,34 @@ public class AddAndDeleteProductTest extends BaseTest {
     @ArgumentsSource(AddProductDataProvider.class)
     void addAndDeleteProductTest(Product testProduct) {
 
-        //Сохранение первоначальный список товаров, через API")
+        // Сохранение первоначальный список товаров, через API")
         List<Product> products = RestUtils.getAllProducts();
 
         // Проверяем что список полученный через API совпадает со списком полученным через БД
         Assertions.assertEquals(products, dataBaseControl.selectAllProductFrom(TABLE_NAME));
 
-        //Добавляем тестируемый товар через API")
+        // Добавляем тестируемый товар через API")
         RestUtils.postProduct(testProduct);
 
-        //Проверяем, что тестируемый товар добавился.
-        //Методом сравнения первоначального списка товаров, полученного через API в начале теста
-        //и текущего списка товаров, полученного из БД, после добавления тестируемого товара.
-        //Они должны быть не равными
+        // Проверяем, что тестируемый товар добавился.
+        // Методом сравнения первоначального списка товаров, полученного через API в начале теста
+        // и текущего списка товаров, полученного из БД, после добавления тестируемого товара.
+        // Они должны быть не равными
         Assertions.assertNotEquals(products, dataBaseControl.selectAllProductFrom(TABLE_NAME),
                 "Первоначальный список товаров из API, совпадает со списком из БД, после добавления товара");
 
-        //Проверяем добавленный товар
+        // Проверяем добавленный товар
         Assertions.assertEquals(testProduct, dataBaseControl.getProductFromTable(testProduct, TABLE_NAME),
                 "Товар не совпадает с тем, что был отправлен в POST запросе");
 
-        //Возвращаем к первоначальному состоянию. Через API
+        // Возвращаем к первоначальному состоянию. Через API
         RestUtils.postReset();
 
-        //Проверяем что тестируемый товар удалился из БД
+        // Проверяем что тестируемый товар удалился из БД
         Assertions.assertNull(dataBaseControl.getProductFromTable(testProduct, TABLE_NAME),
                 "Товар не был удален");
 
-        //Проверяем что список полученный через API в начале теста совпадает
+        // Проверяем что список полученный через API в начале теста совпадает
         // со списком полученным через через API в конце теста")
         Assertions.assertEquals(products, RestUtils.getAllProducts(),
                 "Первоначальный список и список после всех манипуляйций не совпадает");
