@@ -1,4 +1,4 @@
-package ru.ibs.data;
+package ru.ibs.control;
 
 import ru.ibs.constans.EndPoints;
 import ru.ibs.utils.RestUtils;

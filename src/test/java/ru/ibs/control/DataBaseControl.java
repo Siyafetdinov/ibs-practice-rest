@@ -1,4 +1,4 @@
-package ru.ibs.data;
+package ru.ibs.control;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;

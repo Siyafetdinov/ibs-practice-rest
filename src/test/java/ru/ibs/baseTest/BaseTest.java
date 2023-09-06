@@ -1,7 +1,7 @@
 package ru.ibs.baseTest;
 
-import ru.ibs.data.DataBaseControl;
-import ru.ibs.data.SpecificationControl;
+import ru.ibs.control.DataBaseControl;
+import ru.ibs.control.SpecificationControl;
 
 import org.junit.jupiter.api.BeforeAll;
 
