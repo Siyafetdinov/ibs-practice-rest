@@ -1,21 +1,25 @@
 package ru.ibs.utils;
 
-import io.restassured.RestAssured;
-import io.restassured.specification.RequestSpecification;
 import ru.ibs.constans.EndPoints;
 import ru.ibs.product.Product;
 
 import io.restassured.http.ContentType;
+import io.restassured.http.Cookie;
+import static io.restassured.RestAssured.given;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class RestUtils {
-    private static final RequestSpecification baseSpecification = RestAssured.given().log().all();
+    public static Cookie getCookie(String nameCookie) {
+        return given()
+                .when()
+                .get(EndPoints.API_FOOD)
+                .getDetailedCookie(nameCookie);
+    }
 
     public static List<Product> getAllProducts() {
-        return Arrays.asList(baseSpecification.given()
-                .baseUri(EndPoints.URL)
+        return Arrays.asList(given()
                 .contentType(ContentType.JSON)
                 .when()
                 .get(EndPoints.API_FOOD)
@@ -29,13 +33,13 @@ public class RestUtils {
     }
 
     public static void postProduct(Product product) {
-        baseSpecification.given()
-                .baseUri(EndPoints.URL)
+        given()
                 .contentType(ContentType.JSON)
                 .body(product)
                 .when()
                 .post(EndPoints.API_FOOD)
                 .then()
+                .assertThat()
                 .statusCode(200);
     }
 
@@ -44,8 +48,7 @@ public class RestUtils {
     }
 
     public static void postReset(String endPoint) {
-        baseSpecification.given()
-                .baseUri(EndPoints.URL)
+        given()
                 .when()
                 .post(endPoint)
                 .then()
